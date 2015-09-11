@@ -1,4 +1,4 @@
 <?php
 \SYSTEM\autoload::registerFolder(dirname(__FILE__),'');
-\SYSTEM\autoload::registerFolder(dirname(__FILE__).'/qq','DBD');
+require_once dirname(__FILE__).'/sql/autoload.inc';
 \SYSTEM\SAI\sai::register('saimod_webcraft_gallery');

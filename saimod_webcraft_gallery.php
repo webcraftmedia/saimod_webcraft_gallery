@@ -1,7 +1,7 @@
 <?php
 class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {
     public static function getGalleryBootstrap($id){
-        $gallery = \DBD\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ID::QQ(array($id));
+        $gallery = \SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ID::QQ(array($id));
         $gallery_items = '';
         $first = true;
         while($img = $gallery->next()){
@@ -13,7 +13,7 @@ class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {
     }
     
     public static function getGalleryGalleria($id){
-        $gallery = \DBD\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ID::QQ(array($id));
+        $gallery = \SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ID::QQ(array($id));
         $result = '';
         while($img = $gallery->next()){
             $result .= '<img class="carousel-img" src="./api.php?call=files&cat='.$img['file_cat'].'&id='.$img['file_id'].'" alt="">';}
@@ -22,15 +22,15 @@ class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {
     }
     
     public static function sai_mod_saimod_webcraft_gallery_action_addgalleryitem($gallery, $position, $heading, $description, $file_cat, $file_id){
-        if(!\DBD\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ITEM_ADD::QI(array($gallery, $position, $heading, $description, $file_cat, $file_id))){
+        if(!\SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ITEM_ADD::QI(array($gallery, $position, $heading, $description, $file_cat, $file_id))){
             throw new SYSTEM\LOG\ERROR("Problem with adding Galleryitem!");}
         return \SYSTEM\LOG\JsonResult::ok();}    
     public static function sai_mod_saimod_webcraft_gallery_action_delgalleryitem($id){
-        if(!\DBD\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ITEM_DELETE::QI(array($id))){
+        if(!\SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ITEM_DELETE::QI(array($id))){
             throw new SYSTEM\LOG\ERROR("Problem with deleting Galleryitem!");}
         return \SYSTEM\LOG\JsonResult::ok();}
     public static function sai_mod_saimod_webcraft_gallery_action_chggalleryitem($id, $gallery, $position, $heading, $description, $file_cat, $file_id){
-        if(!\DBD\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ITEM_CHG::QI(array($gallery, $position, $heading, $description, $file_cat, $file_id, $id))){
+        if(!\SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ITEM_CHG::QI(array($gallery, $position, $heading, $description, $file_cat, $file_id, $id))){
             throw new SYSTEM\LOG\ERROR("Problem with changing Galleryitem!");}
         return \SYSTEM\LOG\JsonResult::ok();}
     
@@ -60,13 +60,13 @@ class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {
     }
     
     public static function sai_mod_saimod_webcraft_gallery_action_showgalleryitem($gallery,$id){
-        $vars = \DBD\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ITEM_ID::Q1(array($gallery,$id));
+        $vars = \SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ITEM_ID::Q1(array($gallery,$id));
         $vars = array_merge($vars, array('file_cat_options' => self::select_options_cat($vars['file_cat']), 'file_id_options' => self::sai_mod_saimod_webcraft_gallery_action_select_options_id($vars['file_cat'],$vars['file_id'])));
         return \SYSTEM\PAGE\replace::replaceFile(\SYSTEM\SERVERPATH(new PSAI(), 'saimod_webcraft_gallery/tpl/saimod_webcraft_gallery_show.tpl'),$vars);
     }
     
     public static function sai_mod_saimod_webcraft_gallery(){
-        $galleries = DBD\SAIMOD_WEBCRAFT_GALLERY_GALLERIES::QQ();
+        $galleries = \SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERIES::QQ();
         $vars = array('tabopts' => '', 'firsttab' => '');
         $first = true;
         while($gallery = $galleries->next()){
@@ -79,7 +79,7 @@ class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {
     }
     
     public static function sai_mod_saimod_webcraft_gallery_action_tab($name){
-        $gallery = DBD\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ID::QQ(array($name));
+        $gallery = \SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ID::QQ(array($name));
         $content = '';
         while($entry = $gallery->next()){
             $content .= \SYSTEM\PAGE\replace::replaceFile(\SYSTEM\SERVERPATH(new PSAI(), 'saimod_webcraft_gallery/tpl/saimod_webcraft_gallery_tabentry.tpl'), $entry);}
@@ -93,6 +93,5 @@ class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {
     public static function js(){
         return array(  \SYSTEM\WEBPATH(new PSAI(),'saimod_webcraft_gallery/js/saimod_webcraft_gallery.js'));}
     public static function css(){
-        return array();}
-    
+        return array();}   
 }
