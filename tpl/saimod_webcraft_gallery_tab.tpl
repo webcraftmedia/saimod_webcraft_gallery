@@ -9,12 +9,4 @@ ${gallery}
         <th>File</th>
     </tr>
     ${content}
-    <tr>
-        <th><input type="button" class="btn btn-success galleryadd" value="Add"/></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-        <th></th>
-    </tr>
 </table>
