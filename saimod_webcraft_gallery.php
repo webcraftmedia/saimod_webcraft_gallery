@@ -16,7 +16,7 @@ class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {
         $gallery = \SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ID::QQ(array($id));
         $result = '';
         while($img = $gallery->next()){
-            $result .= '<img class="carousel-img" src="./api.php?call=files&cat='.$img['file_cat'].'&id='.$img['file_id'].'" alt="">';}
+            $result .= '<img class="carousel-img img-responsive" src="./api.php?call=files&cat='.$img['file_cat'].'&id='.$img['file_id'].'" alt="">';}
         $result .= '<script>Galleria.loadTheme(\''.\SYSTEM\WEBPATH(new PSAI(), 'saimod_webcraft_gallery/js/galleria/themes/classic/galleria.classic.min.js').'\');Galleria.run(\'.galleria\');</script>';
         return $result;
     }
