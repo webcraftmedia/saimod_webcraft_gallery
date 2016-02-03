@@ -17,7 +17,7 @@ class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {
         $result = '';
         while($img = $gallery->next()){
             $result .= '<img class="carousel-img img-responsive" src="./api.php?call=files&cat='.$img['file_cat'].'&id='.$img['file_id'].'" alt="">';}
-        $result .= '<script>Galleria.run(\'.galleria\');</script>';
+        $result .= '<script>Galleria.run(\'.galleria\',{debug: false});</script>';
         return $result;
     }
     
