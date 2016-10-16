@@ -1,4 +1,10 @@
-<div class="flexslider">
+<style>
+    .flexslider .slides img { 
+        display: block;
+        width: auto; max-height: 500px; margin: auto;
+    }
+</style>
+<div class="flexslider" style="height: 500px;">
     ${gallery}
 </div>
 <table class="table table-hover table-condensed" style="overflow: auto;">
