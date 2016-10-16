@@ -10,6 +10,12 @@ function load_tab(name){
 }
 
 function register_controlls(){
+    $('.flexslider').flexslider({
+        animation: "slide",
+        directionNav: true,
+        slideshow: true,
+        animationLoop: false
+    });
     $('.gallery_entry').click(function(){
         $('#tab_gallery').load('./sai.php?sai_mod=saimod_webcraft_gallery&action=showgalleryitem&gallery='+$(this).attr('gallery')+'&id='+$(this).attr('galleryid'), function(){
             $('#input_show_file_cat').change(function(){

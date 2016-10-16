@@ -1,4 +1,6 @@
-${gallery}
+<div class="flexslider">
+    ${gallery}
+</div>
 <table class="table table-hover table-condensed" style="overflow: auto;">
     <tr>
         <th>ID</th>
