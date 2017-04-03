@@ -1,26 +1,5 @@
 <?php
-class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {
-    public static function getGalleryBootstrap($id){
-        $gallery = \SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ID::QQ(array($id));
-        $gallery_items = '';
-        $first = true;
-        while($img = $gallery->next()){
-            $img['active'] = $first ? 'active' : '';
-            $first = false;
-            $gallery_items .= \SYSTEM\PAGE\replace::replaceFile((new PSAI('saimod_webcraft_gallery/tpl/saimod_webraft_gallery_gallery_item.tpl'))->SERVERPATH(), $img);}
-        return \SYSTEM\PAGE\replace::replaceFile((new PSAI('saimod_webcraft_gallery/tpl/saimod_webraft_gallery_gallery.tpl'))->SERVERPATH(),
-                array('gallery' => $id, 'items' => $gallery_items));
-    }
-    
-    public static function getGalleryGalleria($id){
-        $gallery = \SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ID::QQ(array($id));
-        $result = '';
-        while($img = $gallery->next()){
-            $result .= '<img class="carousel-img img-responsive" src="./files/'.$img['file_cat'].'/'.$img['file_id'].'" alt="'.$img['description'].'">';}
-        $result .= '<script>Galleria.run(\'.galleria\',{debug: false});</script>';
-        return $result;
-    }
-    
+class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {    
     public static function getGalleryFlexslider($id){
         $gallery = \SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ID::QQ(array($id));
         $result = '<ul class="slides">';
@@ -96,7 +75,7 @@ class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {
                 array('content' => $content, 'gallery' => self::getGalleryFlexslider($name)));
     }
     
-    public static function html_li_menu(){return '<li><a href="#!gallery">Gallery</a></li><li class="divider"></li>';}
+    public static function html_li_menu(){return '<li><a href="#!gallery"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;Gallery</a></li><li class="divider"></li>';}
     public static function right_public(){return false;}    
     public static function right_right(){return \SYSTEM\SECURITY\Security::check(\SYSTEM\SECURITY\RIGHTS::SYS_SAI);}
     public static function js(){

@@ -4,5 +4,5 @@
     <td>${position}</td>
     <td>${heading}</td>
     <td>${description}</td>
-    <td><a href="./api.php?call=files&cat=${file_cat}&id=${file_id}">./api.php?call=files&cat=${file_cat}&id=${file_id}<a></td>
+    <td><a href="./files/${file_cat}/${file_id}">./files/${file_cat}/${file_id}<a></td>
 </tr>
