@@ -16,7 +16,7 @@ class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {
         $gallery = \SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ID::QQ(array($id));
         $result = '';
         while($img = $gallery->next()){
-            $result .= '<img class="carousel-img img-responsive" src="./api.php?call=files&cat='.$img['file_cat'].'&id='.$img['file_id'].'" alt="'.$img['description'].'">';}
+            $result .= '<img class="carousel-img img-responsive" src="./files/'.$img['file_cat'].'/'.$img['file_id'].'" alt="'.$img['description'].'">';}
         $result .= '<script>Galleria.run(\'.galleria\',{debug: false});</script>';
         return $result;
     }
@@ -25,7 +25,7 @@ class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {
         $gallery = \SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ID::QQ(array($id));
         $result = '<ul class="slides">';
         while($img = $gallery->next()){
-            $result .= '<li><img class="class="img-responsive" src="./api.php?call=files&cat='.$img['file_cat'].'&id='.$img['file_id'].'" alt="'.$img['description'].'"></li>';}
+            $result .= '<li><img class="class="img-responsive" src="./files/'.$img['file_cat'].'/'.$img['file_id'].'" alt="'.$img['description'].'"></li>';}
         $result .= '</ul>';
         return $result;
     }
