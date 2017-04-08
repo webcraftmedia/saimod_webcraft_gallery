@@ -4,7 +4,7 @@ class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {
         $gallery = \SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ID::QQ(array($id));
         $result = '<ul class="slides">';
         while($img = $gallery->next()){
-            $result .= '<li><img class="class="img-responsive" src="./files/'.$img['file_cat'].'/'.$img['file_id'].'" alt="'.$img['description'].'"></li>';}
+            $result .= '<li><img class="img-responsive" src="./files/'.$img['file_cat'].'/'.$img['file_id'].'" alt="'.$img['description'].'"></li>';}
         $result .= '</ul>';
         return $result;
     }
