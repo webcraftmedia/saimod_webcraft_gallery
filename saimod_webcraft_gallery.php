@@ -75,7 +75,7 @@ class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {
                 array('content' => $content, 'gallery' => self::getGalleryFlexslider($name)));
     }
     
-    public static function html_li_menu(){return '<li><a href="#!gallery"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;Gallery</a></li><li class="divider"></li>';}
+    public static function html_li_menu(){return '<li id="menu_gallery"><a href="#!gallery"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;Gallery</a></li><li class="divider"></li>';}
     public static function right_public(){return false;}    
     public static function right_right(){return \SYSTEM\SECURITY\Security::check(\SYSTEM\SECURITY\RIGHTS::SYS_SAI);}
     public static function js(){
