@@ -1,5 +1,5 @@
 <?php
-class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {    
+class saimod_webcraft_gallery extends \SYSTEM\SAI\sai_module {
     public static function getGalleryFlexslider($id){
         $gallery = \SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ID::QQ(array($id));
         $result = '<ul class="slides">';
@@ -75,7 +75,12 @@ class saimod_webcraft_gallery extends \SYSTEM\SAI\SaiModule {
                 array('content' => $content, 'gallery' => self::getGalleryFlexslider($name)));
     }
     
-    public static function html_li_menu(){return '<li id="menu_gallery"><a href="#!gallery"><span class="glyphicon glyphicon-picture"></span>&nbsp;&nbsp;Gallery</a></li><li class="divider"></li>';}
+    public static function menu(){
+        return new \SYSTEM\SAI\sai_module_menu( 1, 
+                                                \SYSTEM\SAI\sai_module_menu::POISITION_RIGHT,
+                                                \SYSTEM\SAI\sai_module_menu::DIVIDER_NONE,
+                                                \SYSTEM\PAGE\replace::replaceFile((new PSAI('saimod_webcraft_gallery/tpl/menu.tpl'))->SERVERPATH()));}
+    
     public static function right_public(){return false;}    
     public static function right_right(){return \SYSTEM\SECURITY\Security::check(\SYSTEM\SECURITY\RIGHTS::SYS_SAI);}
     public static function js(){
