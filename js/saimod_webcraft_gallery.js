@@ -1,5 +1,10 @@
 function init_saimod_webcraft_gallery() { 
-    $('#gallerytab a').click(function (e) {e.preventDefault(); load_tab($(this).attr('gallery')); $(this).tab('show');});
+    // $('#gallerytab a').click(function (e) {e.preventDefault(); load_tab($(this).attr('gallery')); $(this).tab('show');});
+    $('#tabs_gallery a').click(function (e) {
+        $('#tabs_gallery li a').each(function(){
+            $(this).removeClass('active');});
+        $(this).addClass('active');
+    });
     register_controlls();
 }
 

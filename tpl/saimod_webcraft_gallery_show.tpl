@@ -29,7 +29,7 @@
         </td>
     </tr>
 </table>
-<img id="img_preview" src="./api.php?call=files&cat=${file_cat}&id=${file_id}"/>
+<img id="img_preview" src="./api.php?call=files&cat=${file_cat}&id=${file_id}" style="max-width: 100%"/>
 </br>
 </br>
 <input type="button" class="btn btn-success" id="btn_chg"  galleryid="${ID}"value="Change"/>

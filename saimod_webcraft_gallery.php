@@ -59,14 +59,14 @@ class saimod_webcraft_gallery extends \SYSTEM\SAI\sai_module {
         $first = true;
         while($gallery = $galleries->next()){
             $gallery['active'] = $first ? 'active' : '';
-            if($first){$vars['firsttab'] = self::sai_mod_saimod_webcraft_gallery_action_tab($gallery['gallery']);}
+            // if($first){$vars['firsttab'] = self::sai_mod_saimod_webcraft_gallery_action_tab($gallery['gallery']);}
             $first = false;
             $vars['tabopts'] .= \SYSTEM\PAGE\replace::replaceFile((new PSAI('saimod_webcraft_gallery/tpl/saimod_webcraft_gallery_tabopt.tpl'))->SERVERPATH(), $gallery);}
         
         return \SYSTEM\PAGE\replace::replaceFile((new PSAI('saimod_webcraft_gallery/tpl/saimod_webcraft_gallery_tabs.tpl'))->SERVERPATH(),$vars);
     }
     
-    public static function sai_mod_saimod_webcraft_gallery_action_tab($name){
+    public static function sai_mod_saimod_webcraft_gallery_action_tab($name = 1){
         $gallery = \SQL\SAIMOD_WEBCRAFT_GALLERY_GALLERY_ID::QQ(array($name));
         $content = '';
         while($entry = $gallery->next()){

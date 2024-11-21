@@ -1,1 +1,1 @@
-<li class="${active}"><a href="#tab_gallery" gallery="${gallery}">Gallery ${gallery}</a></li>
+<li class="nav-item"><a class="nav-link ${active}" href="#!gallery;name.${gallery}">Gallery ${gallery}</a></li>

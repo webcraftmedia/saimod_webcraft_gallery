@@ -24,7 +24,7 @@
         </td>
     </tr>
 </table>
-<img id="img_preview" src="./api.php?call=files&cat=&id="/>
+<img id="img_preview" src="./api.php?call=files&cat=&id=" style="max-width: 100%"/>
 </br>
 </br>
 <input type="button" class="btn btn-success" id="btn_add" value="Add"/>

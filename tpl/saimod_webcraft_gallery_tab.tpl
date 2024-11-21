@@ -18,3 +18,4 @@
     </tr>
     ${content}
 </table>
+<input type="button" class="btn btn-success galleryadd" value="Add"/>
